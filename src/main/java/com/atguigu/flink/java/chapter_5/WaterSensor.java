@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
  * 水位传感器：用于接收水位数据
  *
  * id:传感器编号
- * ts:时间戳
+ * ts:时间戳 毫秒
  * vc:水位
  */
 @Data
@@ -20,8 +20,4 @@ public class WaterSensor {
     private String id;
     private Long ts;
     private Integer vc;
-
-    public static void main(String[] args) {
-        System.out.println("aaa");
-    }
 }
