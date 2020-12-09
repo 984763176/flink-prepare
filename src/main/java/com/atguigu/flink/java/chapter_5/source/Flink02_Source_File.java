@@ -1,4 +1,4 @@
-package com.atguigu.flink.java.chapter_5;
+package com.atguigu.flink.java.chapter_5.source;
 
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 

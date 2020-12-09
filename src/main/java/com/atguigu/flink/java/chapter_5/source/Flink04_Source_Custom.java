@@ -1,5 +1,6 @@
-package com.atguigu.flink.java.chapter_5;
+package com.atguigu.flink.java.chapter_5.source;
 
+import com.atguigu.flink.java.chapter_5.WaterSensor;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.functions.source.SourceFunction;
 
