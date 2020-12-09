@@ -33,15 +33,15 @@ public class Flink02_WC_BoundedStream {
                 .returns(Types.STRING)
                 .map(word -> Tuple2.of(word, 1L))
                 .returns(Types.TUPLE(Types.STRING, Types.LONG));
-        // 4. 分组
+// 4. 分组
         KeyedStream<Tuple2<String, Long>, String> wordAndOneKS = wordAndOne
                 .keyBy(t -> t.f0);
-        // 5. 求和
+// 5. 求和
         SingleOutputStreamOperator<Tuple2<String, Long>> result = wordAndOneKS
                 .sum(1);
-        // 6. 打印
+// 6. 打印
         result.print();
-        // 7. 执行
+// 7. 执行
         env.execute();
     }
 }
