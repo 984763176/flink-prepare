@@ -10,14 +10,9 @@ import java.util.ArrayList;
  * @Author lizhenchao@atguigu.cn
  * @Date 2020/12/10 7:17
  */
-public class Flink09_TransForm_RollingAgg {
+public class Flink10_TransForm_Reduce {
     public static void main(String[] args) throws Exception {
-        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment().setParallelism(2);
-        /*DataStreamSource<Integer> stream = env.fromElements(1, 2, 3, 4, 5);
-        KeyedStream<Integer, String> kbStream = stream.keyBy(ele -> ele % 2 == 0 ? "奇数" : "偶数");
-        kbStream.sum(0).print("sum");
-        kbStream.max(0).print("max");
-        kbStream.min(0).print("min");*/
+        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment().setParallelism(1);
 
         ArrayList<WaterSensor> waterSensors = new ArrayList<>();
         waterSensors.add(new WaterSensor("sensor_1", 1607527992000L, 20));
@@ -31,14 +26,14 @@ public class Flink09_TransForm_RollingAgg {
           .keyBy(WaterSensor::getId);
 
         kbStream
-          .max("vc")
-          .print("max...");
+          .reduce((value1, value2) -> {
+              System.out.println("reducer function ...");
+              return new WaterSensor(value1.getId(), value1.getTs(), value1.getVc() + value2.getVc());
+          })
+          .print("reduce...");
 
         env.execute();
-
     }
-
-
 }
 
 
