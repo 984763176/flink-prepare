@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * @Author lizhenchao@atguigu.cn
  * @Date 2020/12/10 7:17
  */
-public class Flink10_TransForm_Reduce {
+public class Flink11_TransForm_Reduce {
     public static void main(String[] args) throws Exception {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment().setParallelism(1);
 
